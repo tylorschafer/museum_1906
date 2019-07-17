@@ -24,7 +24,7 @@ class MuseumTest < Minitest:: Test
     assert_equal [], @dmns.exhibits
   end
 
-  def test_add_exhibits
+  def test_add_exhibit
     @dmns.add_exhibit(@gems_and_minerals)
     @dmns.add_exhibit(@dead_sea_scrolls)
     @dmns.add_exhibit(@imax)
@@ -33,10 +33,13 @@ class MuseumTest < Minitest:: Test
   end
 
   def test_recommend_exhibits
+    @dmns.add_exhibit(@gems_and_minerals)
+    @dmns.add_exhibit(@dead_sea_scrolls)
+    @dmns.add_exhibit(@imax)
     @bob.add_interest("Dead Sea Scrolls")
     @bob.add_interest("Gems and Minerals")
     @sally.add_interest("IMAX")
-    expected = [@dead_sea_scrolls,@gems_and_minerals]
+    expected = [@gems_and_minerals,@dead_sea_scrolls]
     assert_equal expected , @dmns.recommend_exhibits(@bob)
     assert_equal [@imax], @dmns.recommend_exhibits(@sally)
   end
