@@ -64,8 +64,8 @@ class MuseumTest < Minitest:: Test
     @dmns.admit(@bob)
     @dmns.admit(@sally)
     expected = {
-      @gems_and_minerals => [@bob]
-      @dead_sea_scrolls => [@bob, @sally]
+      @gems_and_minerals => [@bob],
+      @dead_sea_scrolls => [@bob, @sally],
       @imax => []
     }
     assert_equal expected, @dmns.patrons_by_exhibit_interest
